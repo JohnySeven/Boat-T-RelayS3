@@ -12,9 +12,6 @@ bool Relay6::begin()
     control = new ShiftRegister74HC595<1>(DATA_PIN, CLOCK_PIN, LATCH_PIN);
     control->setAllLow();
 
-    
-    //debugI("Relay4 begin, sync=%d, status=%d", syncReg, statusReg);
-
     for (int i = 0; i < 6; i++)
     {
         relay_channels[i] = new RelayChannel(i);
@@ -50,7 +47,6 @@ void Relay6::set_green_led(bool value)
 void RelayChannel::start()
 {
     output = false;
-    //debugI("Relay %d status = %", relay_index_, output);
     notify();
     ReactESP::app->onRepeat(5000, [this]()
     {

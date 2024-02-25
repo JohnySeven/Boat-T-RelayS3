@@ -14,14 +14,8 @@
 #include "sensesp/system/pwm_output.h"
 #include "sensesp/sensors/sensor.h"
 
-#ifndef OUTPUT_BUFFER_SIZE
-#endif
-// SHT30+BMP280
 reactesp::ReactESP app;
 Relay6 relay;
-float pwm_value = 0.0f;
-float off_value = 0.0f;
-float on_value = 0.0f;
 bool volatile button_down = false;
 
 void initialize_relay_channel(String sk_path, String config, int index)
@@ -55,9 +49,7 @@ void setup()
   auto *builder = (new SensESPAppBuilder())
                       ->enable_ip_address_sensor()
                       ->set_hostname("relays_node")
-                      //->set_sk_server("sunseeker27.cz", 80)
                       ->set_sk_server("192.168.89.132", 3000);
-  //->set_wifi("DryII", "wifi4boat");
 
   sensesp_app = builder->get_app();
 
