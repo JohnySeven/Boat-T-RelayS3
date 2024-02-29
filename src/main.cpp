@@ -48,8 +48,7 @@ void setup()
   // Create the global SensESPApp() object.
   auto *builder = (new SensESPAppBuilder())
                       ->enable_ip_address_sensor()
-                      ->set_hostname("relays_node")
-                      ->set_sk_server("192.168.89.132", 3000);
+                      ->set_hostname("relays_node");
 
   sensesp_app = builder->get_app();
 
